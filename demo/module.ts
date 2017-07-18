@@ -55,6 +55,10 @@ import { ColumnForceComponent } from './columns/column-force.component';
 import { ColumnFlexComponent } from './columns/column-flex.component';
 import { ColumnPinningComponent } from './columns/pinning.component';
 
+// -- Breeze
+import { BreezeOneComponent } from './breeze/breeze-one.component';
+import { BreezeTwoComponent } from './breeze/breeze-two.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,7 +100,9 @@ import { ColumnPinningComponent } from './columns/pinning.component';
     MultiClickSelectionComponent,
     RowCssComponent,
     DynamicHeightComponent,
-    FooterDemoComponent
+    FooterDemoComponent,
+    BreezeOneComponent,
+    BreezeTwoComponent
   ],
   imports: [BrowserModule, NgxDatatableModule],
   bootstrap: [AppComponent]

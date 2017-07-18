@@ -23,54 +23,72 @@ import { MouseEvent } from '../events';
     <div
       visibilityObserver
       (visible)="recalculate()">
-      <datatable-header
-        *ngIf="headerHeight"
-        [sorts]="sorts"
-        [sortType]="sortType"
-        [scrollbarH]="scrollbarH"
-        [innerWidth]="innerWidth"
-        [offsetX]="offsetX"
-        [columns]="columns"
-        [headerHeight]="headerHeight"
-        [reorderable]="reorderable"
-        [sortAscendingIcon]="cssClasses.sortAscending"
-        [sortDescendingIcon]="cssClasses.sortDescending"
-        [allRowsSelected]="allRowsSelected"
-        [selectionType]="selectionType"
-        (sort)="onColumnSort($event)"
-        (resize)="onColumnResize($event)"
-        (reorder)="onColumnReorder($event)"
-        (select)="onHeaderSelect($event)"
-        (columnContextmenu)="onColumnContextmenu($event)">
-      </datatable-header>
-      <datatable-body
-        [rows]="rows"
-        [scrollbarV]="scrollbarV"
-        [scrollbarH]="scrollbarH"
-        [loadingIndicator]="loadingIndicator"
-        [externalPaging]="externalPaging"
-        [rowHeight]="rowHeight"
-        [rowCount]="rowCount"
-        [offset]="offset"
-        [trackByProp]="trackByProp"
-        [columns]="columns"
-        [pageSize]="pageSize"
-        [offsetX]="offsetX"
-        [rowDetail]="rowDetail"
-        [selected]="selected"
-        [innerWidth]="innerWidth"
-        [bodyHeight]="bodyHeight"
-        [selectionType]="selectionType"
-        [emptyMessage]="messages.emptyMessage"
-        [rowIdentity]="rowIdentity"
-        [rowClass]="rowClass"
-        [selectCheck]="selectCheck"
-        (page)="onBodyPage($event)"
-        (activate)="activate.emit($event)"
-        (rowContextmenu)="onRowContextmenu($event)"
-        (select)="onBodySelect($event)"
-        (scroll)="onBodyScroll($event)">
-      </datatable-body>
+      <div class="ngx-datatable-content">
+
+        <datatable-settings 
+          *ngIf="settingsHeight"
+          [settingsHeight]="settingsHeight"
+          [rowCount]="rowCount"
+          [pageSize]="pageSize"
+          [limits]="limits"
+          [offset]="offset"
+          [pagerLeftArrowIcon]="cssClasses.pagerLeftArrow"
+          [pagerRightArrowIcon]="cssClasses.pagerRightArrow"
+          (page)="onSettingsPage($event)"
+          (search)="search.emit($event)">
+        </datatable-settings>
+
+        <div>
+          <datatable-header
+            *ngIf="headerHeight"
+            [sorts]="sorts"
+            [sortType]="sortType"
+            [scrollbarH]="scrollbarH"
+            [innerWidth]="innerWidth"
+            [offsetX]="offsetX"
+            [columns]="columns"
+            [headerHeight]="headerHeight"
+            [reorderable]="reorderable"
+            [sortAscendingIcon]="cssClasses.sortAscending"
+            [sortDescendingIcon]="cssClasses.sortDescending"
+            [allRowsSelected]="allRowsSelected"
+            [selectionType]="selectionType"
+            (sort)="onColumnSort($event)"
+            (resize)="onColumnResize($event)"
+            (reorder)="onColumnReorder($event)"
+            (select)="onHeaderSelect($event)"
+            (columnContextmenu)="onColumnContextmenu($event)">
+          </datatable-header>
+          <datatable-body
+            [rows]="rows"
+            [scrollbarV]="scrollbarV"
+            [scrollbarH]="scrollbarH"
+            [loadingIndicator]="loadingIndicator"
+            [externalPaging]="externalPaging"
+            [rowHeight]="rowHeight"
+            [rowCount]="rowCount"
+            [offset]="offset"
+            [trackByProp]="trackByProp"
+            [columns]="columns"
+            [pageSize]="pageSize"
+            [offsetX]="offsetX"
+            [rowDetail]="rowDetail"
+            [selected]="selected"
+            [innerWidth]="innerWidth"
+            [bodyHeight]="bodyHeight"
+            [selectionType]="selectionType"
+            [emptyMessage]="messages.emptyMessage"
+            [rowIdentity]="rowIdentity"
+            [rowClass]="rowClass"
+            [selectCheck]="selectCheck"
+            (page)="onBodyPage($event)"
+            (activate)="activate.emit($event)"
+            (rowContextmenu)="onRowContextmenu($event)"
+            (select)="onBodySelect($event)"
+            (scroll)="onBodyScroll($event)">
+          </datatable-body>
+        </div>
+      </div>
       <datatable-footer
         *ngIf="footerHeight"
         [rowCount]="rowCount"
@@ -200,7 +218,16 @@ export class DatatableComponent implements OnInit, AfterViewInit, DoCheck {
    * @type {*}
    * @memberOf DatatableComponent
    */
-  @Input() headerHeight: any = 30;
+  @Input() headerHeight: any = 30; 
+  
+  /**
+   * The minimum header height in pixels.
+   * Pass a falsey for no header
+   *
+   * @type {*}
+   * @memberOf DatatableComponent
+   */
+  @Input() settingsHeight: any = 0;
 
   /**
    * The minimum footer height in pixels.
@@ -237,6 +264,14 @@ export class DatatableComponent implements OnInit, AfterViewInit, DoCheck {
    * @memberOf DatatableComponent
    */
   @Input() limit: number = undefined;
+
+  /**
+   * The configurable limits array
+   * Defautl value: `undefined`
+   * 
+   * @type {number[]}
+   */
+  @Input() limits: number[] = undefined;
 
   /**
    * The total count of all rows.
@@ -444,6 +479,14 @@ export class DatatableComponent implements OnInit, AfterViewInit, DoCheck {
    * @memberOf DatatableComponent
    */
   @Output() page: EventEmitter<any> = new EventEmitter();
+
+  /**
+   * Search was invoked.
+   *
+   * @type {EventEmitter<any>}
+   * @memberOf DatatableComponent
+   */
+  @Output() search: EventEmitter<any> = new EventEmitter();
 
   /**
    * Columns were re-ordered.
@@ -841,6 +884,27 @@ export class DatatableComponent implements OnInit, AfterViewInit, DoCheck {
   }
 
   /**
+   * Settings triggered a page event.
+   *
+   * @param {*} { offset }
+   *
+   * @memberOf DatatableComponent
+   */
+  onSettingsPage(event: any): void {
+    console.log('Settings event', event);
+    this.offset = event.page - 1;
+    this.limit = event.limit || this.limit;
+    this.bodyComponent.updateOffsetY(this.offset);
+
+    this.page.emit({
+      count: this.count,
+      pageSize: this.pageSize,
+      limit: this.limit,
+      offset: this.offset
+    });
+  }
+
+  /**
    * Body triggered a page event.
    *
    * @param {*} { offset }
@@ -878,6 +942,7 @@ export class DatatableComponent implements OnInit, AfterViewInit, DoCheck {
    * @memberOf DatatableComponent
    */
   onFooterPage(event: any) {
+    console.log('Footer event', event);
     this.offset = event.page - 1;
     this.bodyComponent.updateOffsetY(this.offset);
 

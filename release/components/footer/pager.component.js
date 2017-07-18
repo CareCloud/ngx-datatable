@@ -76,9 +76,19 @@ var DataTablePagerComponent = (function () {
         var maxSize = 5;
         var isMaxSized = maxSize < this.totalPages;
         page = page || this.page;
+        var left = Math.floor((maxSize - 1) / 2);
+        var right = Math.ceil((maxSize - 1) / 2);
         if (isMaxSized) {
-            startPage = ((Math.ceil(page / maxSize) - 1) * maxSize) + 1;
-            endPage = Math.min(startPage + maxSize - 1, this.totalPages);
+            startPage = page - left;
+            endPage = page + right;
+            if (startPage < 1) {
+                startPage = 1;
+                endPage = maxSize;
+            }
+            else if (endPage > this.totalPages) {
+                endPage = this.totalPages;
+                startPage = this.totalPages - maxSize + 1;
+            }
         }
         for (var num = startPage; num <= endPage; num++) {
             pages.push({
@@ -91,7 +101,8 @@ var DataTablePagerComponent = (function () {
     DataTablePagerComponent.decorators = [
         { type: core_1.Component, args: [{
                     selector: 'datatable-pager',
-                    template: "\n    <ul class=\"pager\">\n      <li [class.disabled]=\"!canPrevious()\">\n        <a\n          href=\"javascript:void(0)\"\n          (click)=\"selectPage(1)\">\n          <i class=\"{{pagerPreviousIcon}}\"></i>\n        </a>\n      </li>\n      <li [class.disabled]=\"!canPrevious()\">\n        <a\n          href=\"javascript:void(0)\"\n          (click)=\"prevPage()\">\n          <i class=\"{{pagerLeftArrowIcon}}\"></i>\n        </a>\n      </li>\n      <li\n        class=\"pages\"\n        *ngFor=\"let pg of pages\"\n        [class.active]=\"pg.number === page\">\n        <a\n          href=\"javascript:void(0)\"\n          (click)=\"selectPage(pg.number)\">\n          {{pg.text}}\n        </a>\n      </li>\n      <li [class.disabled]=\"!canNext()\">\n        <a\n          href=\"javascript:void(0)\"\n          (click)=\"nextPage()\">\n          <i class=\"{{pagerRightArrowIcon}}\"></i>\n        </a>\n      </li>\n      <li [class.disabled]=\"!canNext()\">\n        <a\n          href=\"javascript:void(0)\"\n          (click)=\"selectPage(totalPages)\">\n          <i class=\"{{pagerNextIcon}}\"></i>\n        </a>\n      </li>\n    </ul>\n  ",
+                    styleUrls: ['./pager.css'],
+                    template: "\n    <button class=\"table-page-item\" *ngIf=\"pages[0].text > 1\" (click)=selectPage(1)>\n        FIRST\n    </button>\n    <div class=\"ellipsis\" *ngIf=\"pages[0].text > 1\">\n      <div class=\"oval\"></div>\n      <div class=\"oval\"></div>\n      <div class=\"oval\"></div>\n    </div>\n    <button *ngFor=\"let pg of pages\" \n            class=\"table-page-item\" [class.active]=\"pg.number === page\" \n            (click) =\"selectPage(pg.text)\">\n      {{pg.text}}\n    </button>\n    <div class=\"ellipsis\" *ngIf=\"pages[pages.length - 1].text != totalPages\">\n      <div class=\"oval\"></div>\n      <div class=\"oval\"></div>\n      <div class=\"oval\"></div>\n    </div>\n    <button class=\"table-page-item\" \n            *ngIf=\"pages[pages.length - 1].text != totalPages\"\n            (click)=selectPage(totalPages)>\n        LAST\n    </button>\n  ",
                     host: {
                         class: 'datatable-pager'
                     },

@@ -81,6 +81,14 @@ export declare class DatatableComponent implements OnInit, AfterViewInit, DoChec
      */
     headerHeight: any;
     /**
+     * The minimum header height in pixels.
+     * Pass a falsey for no header
+     *
+     * @type {*}
+     * @memberOf DatatableComponent
+     */
+    settingsHeight: any;
+    /**
      * The minimum footer height in pixels.
      * Pass falsey for no footer
      *
@@ -112,6 +120,13 @@ export declare class DatatableComponent implements OnInit, AfterViewInit, DoChec
      * @memberOf DatatableComponent
      */
     limit: number;
+    /**
+     * The configurable limits array
+     * Defautl value: `undefined`
+     *
+     * @type {number[]}
+     */
+    limits: number[];
     /**
      * Gets the count.
      *
@@ -275,6 +290,13 @@ export declare class DatatableComponent implements OnInit, AfterViewInit, DoChec
      * @memberOf DatatableComponent
      */
     page: EventEmitter<any>;
+    /**
+     * Search was invoked.
+     *
+     * @type {EventEmitter<any>}
+     * @memberOf DatatableComponent
+     */
+    search: EventEmitter<any>;
     /**
      * Columns were re-ordered.
      *
@@ -507,6 +529,14 @@ export declare class DatatableComponent implements OnInit, AfterViewInit, DoChec
      * @memberOf DatatableComponent
      */
     recalculatePages(): void;
+    /**
+     * Settings triggered a page event.
+     *
+     * @param {*} { offset }
+     *
+     * @memberOf DatatableComponent
+     */
+    onSettingsPage(event: any): void;
     /**
      * Body triggered a page event.
      *

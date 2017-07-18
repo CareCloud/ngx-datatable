@@ -9,4 +9,5 @@ __export(require("./body"));
 __export(require("./footer"));
 __export(require("./columns"));
 __export(require("./row-detail"));
+__export(require("./settings-row"));
 //# sourceMappingURL=index.js.map

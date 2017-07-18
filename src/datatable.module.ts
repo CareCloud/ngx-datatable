@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import 'rxjs/add/observable/fromEvent';
 
 import {
@@ -8,8 +9,12 @@ import {
   DataTableHeaderComponent,
   DataTableBodyComponent,
   DataTableFooterComponent,
+  DataTableSettingsComponent,
   DataTableHeaderCellComponent,
   DataTablePagerComponent,
+  DataTablePagingComponent,
+  DataTableLimiterComponent,
+  DataTableSearchComponent,
   DataTableBodyRowComponent,
   DataTableRowWrapperComponent,
   ProgressBarComponent,
@@ -36,7 +41,8 @@ import { ScrollbarHelper } from './services';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [
     ScrollbarHelper
@@ -55,7 +61,11 @@ import { ScrollbarHelper } from './services';
     DataTableHeaderCellComponent,
     DataTableBodyComponent,
     DataTableFooterComponent,
+    DataTableSettingsComponent,
     DataTablePagerComponent,
+    DataTablePagingComponent,
+    DataTableLimiterComponent,
+    DataTableSearchComponent,
     ProgressBarComponent,
     DataTableBodyRowComponent,
     DataTableRowWrapperComponent,

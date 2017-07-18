@@ -4,47 +4,31 @@ import {
 
 @Component({
   selector: 'datatable-pager',
+  styleUrls: ['./pager.scss'],
   template: `
-    <ul class="pager">
-      <li [class.disabled]="!canPrevious()">
-        <a
-          href="javascript:void(0)"
-          (click)="selectPage(1)">
-          <i class="{{pagerPreviousIcon}}"></i>
-        </a>
-      </li>
-      <li [class.disabled]="!canPrevious()">
-        <a
-          href="javascript:void(0)"
-          (click)="prevPage()">
-          <i class="{{pagerLeftArrowIcon}}"></i>
-        </a>
-      </li>
-      <li
-        class="pages"
-        *ngFor="let pg of pages"
-        [class.active]="pg.number === page">
-        <a
-          href="javascript:void(0)"
-          (click)="selectPage(pg.number)">
-          {{pg.text}}
-        </a>
-      </li>
-      <li [class.disabled]="!canNext()">
-        <a
-          href="javascript:void(0)"
-          (click)="nextPage()">
-          <i class="{{pagerRightArrowIcon}}"></i>
-        </a>
-      </li>
-      <li [class.disabled]="!canNext()">
-        <a
-          href="javascript:void(0)"
-          (click)="selectPage(totalPages)">
-          <i class="{{pagerNextIcon}}"></i>
-        </a>
-      </li>
-    </ul>
+    <button class="table-page-item" *ngIf="pages[0].text > 1" (click)=selectPage(1)>
+        FIRST
+    </button>
+    <div class="ellipsis" *ngIf="pages[0].text > 1">
+      <div class="oval"></div>
+      <div class="oval"></div>
+      <div class="oval"></div>
+    </div>
+    <button *ngFor="let pg of pages" 
+            class="table-page-item" [class.active]="pg.number === page" 
+            (click) ="selectPage(pg.text)">
+      {{pg.text}}
+    </button>
+    <div class="ellipsis" *ngIf="pages[pages.length - 1].text != totalPages">
+      <div class="oval"></div>
+      <div class="oval"></div>
+      <div class="oval"></div>
+    </div>
+    <button class="table-page-item" 
+            *ngIf="pages[pages.length - 1].text != totalPages"
+            (click)=selectPage(totalPages)>
+        LAST
+    </button>
   `,
   host: {
     class: 'datatable-pager'
@@ -135,9 +119,19 @@ export class DataTablePagerComponent {
 
     page = page || this.page;
 
+    const left = Math.floor((maxSize - 1) / 2);
+    const right = Math.ceil((maxSize - 1) / 2);
+
     if (isMaxSized) {
-      startPage = ((Math.ceil(page / maxSize) - 1) * maxSize) + 1;
-      endPage = Math.min(startPage + maxSize - 1, this.totalPages);
+        startPage = page - left;
+        endPage = page + right;
+        if (startPage < 1) {
+          startPage = 1;
+          endPage = maxSize;
+        } else if (endPage > this.totalPages) {
+          endPage = this.totalPages;
+          startPage = this.totalPages - maxSize + 1;
+        }
     }
 
     for (let num = startPage; num <= endPage; num++) {

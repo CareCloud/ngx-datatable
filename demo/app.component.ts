@@ -104,6 +104,13 @@ import { Location, LocationStrategy, HashLocationStrategy } from '@angular/commo
               <li><a href="#pinning" (click)="state='pinning'">Pinning</a></li>
             </ul>
           </li>
+          <li>
+            <h4>Breeze Demo</h4>
+            <ul>
+              <li><a href="#breeze-1" (click)="state='breeze-1'">Breeze 1</a></li>
+              <li><a href="#breeze-2" (click)="state='breeze-2'">Breeze 2</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <content>
@@ -157,6 +164,10 @@ import { Location, LocationStrategy, HashLocationStrategy } from '@angular/commo
         <column-standard-demo *ngIf="state === 'fixed'"></column-standard-demo>
         <column-force-demo *ngIf="state === 'force'"></column-force-demo>
         <column-pinning-demo *ngIf="state === 'pinning'"></column-pinning-demo>
+
+        <!-- Breeze -->
+        <breeze-one-demo *ngIf="state === 'breeze-1'"></breeze-one-demo>
+        <breeze-two-demo *ngIf="state === 'breeze-2'"></breeze-two-demo>
       </content>
     </div>
   `

@@ -20,10 +20,16 @@
    * Shared Styles
    */
   /**
+   * Settings Styles
+   */
+  /**
    * Header Styles
    */
   /**
    * Body Styles
+   */
+  /**
+   * Content Styles (Header and Body)
    */
   /**
    * Footer Styles
@@ -88,6 +94,11 @@
   .ngx-datatable .datatable-row-center,
   .ngx-datatable .datatable-row-right {
     position: relative; }
+  .ngx-datatable .datatable-settings {
+    position: relative;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 10px; }
   .ngx-datatable .datatable-header {
     display: block;
     overflow: hidden; }
@@ -147,6 +158,11 @@
         display: -ms-flexbox;
         display: -webkit-flex;
         display: flex; }
+  .ngx-datatable .ngx-datatable-content {
+    border: 1px solid #CFD8DC;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.15); }
   .ngx-datatable .datatable-footer {
     display: block;
     width: 100%; }

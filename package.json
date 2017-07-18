@@ -67,6 +67,7 @@
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/core": "^4.0.0",
+    "@angular/forms": "^4.0.0",
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "core-js": "^2.4.0",
@@ -134,5 +135,8 @@
     "webpack-merge": "^4.1.0",
     "webpack-notifier": "^1.5.0",
     "zone.js": "^0.8.12"
+  },
+  "dependencies": {
+    "@angular/forms": "^4.0.0"
   }
 }

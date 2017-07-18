@@ -19,6 +19,7 @@ import { MouseEvent } from '../../events';
         [class]="'datatable-row-' + colGroup.type"
         [ngStyle]="stylesByGroup(colGroup.type)">
         <datatable-header-cell
+          [style.line-height]="headerHeight"
           *ngFor="let column of colGroup.columns; trackBy: columnTrackingFn"
           resizeable
           [resizeEnabled]="column.resizeable"
