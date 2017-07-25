@@ -6,13 +6,15 @@ import {
   selector: 'datatable-settings',
   styleUrls: ['./settings.scss'],
   template: `
-    <div style="display:inline-block; height: 100%; width: 100%;;">
-        <div style="display:inline-block; float: left" [hidden]="true">
+    <div class="datatable-settings-inner">
+        <div class="settings-left" [hidden]="!isVisibleSearch">
           <datatable-search
+            [searchTerm]="searchTerm"
+            [searchPlaceholder]="searchPlaceholder"
             (search)="search.emit($event)">
           </datatable-search>
         </div>
-        <div style="display:inline-block; float: right">
+        <div class="settings-right">
             <div class="setting-tab" [hidden]="!isVisibleLimiter">
               <datatable-limiter
                 [limit]="pageSize"
@@ -67,8 +69,16 @@ export class DataTableSettingsComponent {
 
   @Input() limits: number[];
 
+  @Input() searchTerm: string;
+  @Input() searchPlaceholder: string;
+  @Input() externalSearching: boolean;
+
   @Output() page: EventEmitter<any> = new EventEmitter();
   @Output() search: EventEmitter<any> = new EventEmitter();
+
+  get isVisibleSearch(): boolean {
+    return this.externalSearching;
+  }
 
   get isVisibleLimiter(): boolean {
     return this.limits && this.limits.length > 0;

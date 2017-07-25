@@ -1,8 +1,3 @@
-/**
- * angular2-data-table v"9.3.1" (https://github.com/swimlane/angular2-data-table)
- * Copyright 2016
- * Licensed under MIT
- */
 .search-text {
   width: 200px;
   height: 30px;
@@ -20,5 +15,3 @@
 
 .fa-times-circle:after {
   content: 'Clear'; }
-
-/*# sourceMappingURL=index.map*/

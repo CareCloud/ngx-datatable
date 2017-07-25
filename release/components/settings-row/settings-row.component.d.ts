@@ -10,8 +10,12 @@ export declare class DataTableSettingsComponent {
     totalMessage: string;
     settingsTemplate: TemplateRef<any>;
     limits: number[];
+    searchTerm: string;
+    searchPlaceholder: string;
+    externalSearching: boolean;
     page: EventEmitter<any>;
     search: EventEmitter<any>;
+    readonly isVisibleSearch: boolean;
     readonly isVisibleLimiter: boolean;
     readonly isVisiblePaging: boolean;
     readonly curPage: number;

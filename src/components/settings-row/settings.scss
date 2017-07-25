@@ -1,4 +1,19 @@
+.datatable-settings-inner {
+    display: inline-block; 
+    height: 100%; 
+    width: 100%;
+    .settings-left {
+        display:inline-block;
+        float: left;
+    }
+    .settings-right {
+        display:inline-block;
+        float: right;
+    }
+}
+
 .setting-tab {
     display: inline-block;
     margin: auto 10px;
 }
+

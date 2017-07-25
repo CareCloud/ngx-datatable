@@ -113,6 +113,28 @@ export declare class DatatableComponent implements OnInit, AfterViewInit, DoChec
      */
     externalSorting: boolean;
     /**
+     * If the table should use external searching or
+     * no searching.
+     *
+     * @type {boolean}
+     * @memberOf DatatableComponent
+     */
+    externalSearching: boolean;
+    /**
+     * Search box placeholder text.
+     *
+     * @type {string}
+     * @memberOf DatatableComponent
+     */
+    searchPlaceholder: string;
+    /**
+     * Search term.
+     *
+     * @type {string}
+     * @memberOf DatatableComponent
+     */
+    searchTerm: string;
+    /**
      * The page size to be shown.
      * Default value: `undefined`
      *
@@ -122,7 +144,7 @@ export declare class DatatableComponent implements OnInit, AfterViewInit, DoChec
     limit: number;
     /**
      * The configurable limits array
-     * Defautl value: `undefined`
+     * Default value: `undefined`
      *
      * @type {number[]}
      */
