@@ -109,6 +109,7 @@ import { Location, LocationStrategy, HashLocationStrategy } from '@angular/commo
             <ul>
               <li><a href="#breeze-1" (click)="state='breeze-1'">Breeze 1</a></li>
               <li><a href="#breeze-2" (click)="state='breeze-2'">Breeze 2</a></li>
+              <li><a href="#breeze-3" (click)="state='breeze-3'">Breeze 3</a></li>
             </ul>
           </li>
         </ul>
@@ -168,6 +169,7 @@ import { Location, LocationStrategy, HashLocationStrategy } from '@angular/commo
         <!-- Breeze -->
         <breeze-one-demo *ngIf="state === 'breeze-1'"></breeze-one-demo>
         <breeze-two-demo *ngIf="state === 'breeze-2'"></breeze-two-demo>
+        <breeze-three-demo *ngIf="state === 'breeze-3'"></breeze-three-demo>
       </content>
     </div>
   `

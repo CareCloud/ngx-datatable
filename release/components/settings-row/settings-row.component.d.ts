@@ -8,7 +8,7 @@ export declare class DataTableSettingsComponent {
     pagerLeftArrowIcon: string;
     pagerRightArrowIcon: string;
     totalMessage: string;
-    settingsTemplate: TemplateRef<any>;
+    configurationTemplate: TemplateRef<any>;
     limits: number[];
     searchTerm: string;
     searchPlaceholder: string;

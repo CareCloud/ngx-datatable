@@ -53,7 +53,7 @@ var DataTableSettingsComponent = (function () {
         { type: core_1.Component, args: [{
                     selector: 'datatable-settings',
                     styleUrls: ['./settings.css'],
-                    template: "\n    <div class=\"datatable-settings-inner\">\n        <div class=\"settings-left\" [hidden]=\"!isVisibleSearch\">\n          <datatable-search\n            [searchTerm]=\"searchTerm\"\n            [searchPlaceholder]=\"searchPlaceholder\"\n            (search)=\"search.emit($event)\">\n          </datatable-search>\n        </div>\n        <div class=\"settings-right\">\n            <div class=\"setting-tab\" [hidden]=\"!isVisibleLimiter\">\n              <datatable-limiter\n                [limit]=\"pageSize\"\n                [limits]=\"limits\"\n                (settingUpdate)=\"page.emit($event)\">\n              </datatable-limiter>\n            </div>\n            <div class=\"setting-tab\" [hidden]=\"!isVisiblePaging\">\n              <datatable-paging\n                [pagerLeftArrowIcon]=\"pagerLeftArrowIcon\"\n                [pagerRightArrowIcon]=\"pagerRightArrowIcon\"\n                [page]=\"curPage\"\n                [size]=\"pageSize\"\n                [count]=\"rowCount\"\n                (settingUpdate)=\"page.emit($event)\">\n              </datatable-paging>\n            </div>\n            <div style=\"display:inline-block;\" [hidden]=\"true\">\n              Cog\n            </div>\n        </div>\n    </div>\n  ",
+                    template: "\n    <div class=\"datatable-settings-inner\">\n        <div class=\"settings-left\" [hidden]=\"!isVisibleSearch\">\n          <datatable-search\n            [searchTerm]=\"searchTerm\"\n            [searchPlaceholder]=\"searchPlaceholder\"\n            (search)=\"search.emit($event)\">\n          </datatable-search>\n        </div>\n        <div class=\"settings-right\">\n            <div class=\"setting-tab\" [hidden]=\"!isVisibleLimiter\">\n              <datatable-limiter\n                [limit]=\"pageSize\"\n                [limits]=\"limits\"\n                (settingUpdate)=\"page.emit($event)\">\n              </datatable-limiter>\n            </div>\n            <div class=\"setting-tab\" [hidden]=\"!isVisiblePaging\">\n              <datatable-paging\n                [pagerLeftArrowIcon]=\"pagerLeftArrowIcon\"\n                [pagerRightArrowIcon]=\"pagerRightArrowIcon\"\n                [page]=\"curPage\"\n                [size]=\"pageSize\"\n                [count]=\"rowCount\"\n                (settingUpdate)=\"page.emit($event)\">\n              </datatable-paging>\n            </div>\n            <div class=\"setting-tab cog\">\n              <datatable-configuration \n                [configurationTemplate]=\"configurationTemplate\">\n              </datatable-configuration>\n            </div>\n        </div>\n    </div>\n  ",
                     host: {
                         class: 'datatable-settings'
                     },
@@ -70,7 +70,7 @@ var DataTableSettingsComponent = (function () {
         'pagerLeftArrowIcon': [{ type: core_1.Input },],
         'pagerRightArrowIcon': [{ type: core_1.Input },],
         'totalMessage': [{ type: core_1.Input },],
-        'settingsTemplate': [{ type: core_1.Input },],
+        'configurationTemplate': [{ type: core_1.Input },],
         'limits': [{ type: core_1.Input },],
         'searchTerm': [{ type: core_1.Input },],
         'searchPlaceholder': [{ type: core_1.Input },],

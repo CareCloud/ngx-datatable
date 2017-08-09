@@ -3,22 +3,11 @@
  * Copyright 2016
  * Licensed under MIT
  */
-.search-text {
-  width: 200px;
-  height: 30px;
-  padding-right: 50px;
-  display: inline-block; }
+.datatable-configuration-popup {
+  position: absolute;
+  right: 0; }
 
-.search-button {
-  margin-left: -50px;
-  height: 30px;
-  width: 50px;
-  display: inline-block; }
-
-.fa-search:after {
-  content: 'Search'; }
-
-.fa-times-circle:after {
-  content: 'Clear'; }
+.fa-cog:after {
+  content: 'Configure'; }
 
 /*# sourceMappingURL=index.map*/

@@ -32,8 +32,10 @@ import {
                 (settingUpdate)="page.emit($event)">
               </datatable-paging>
             </div>
-            <div style="display:inline-block;" [hidden]="true">
-              Cog
+            <div class="setting-tab cog">
+              <datatable-configuration 
+                [configurationTemplate]="configurationTemplate">
+              </datatable-configuration>
             </div>
         </div>
     </div>
@@ -65,7 +67,7 @@ export class DataTableSettingsComponent {
   @Input() pagerLeftArrowIcon: string;
   @Input() pagerRightArrowIcon: string;
   @Input() totalMessage: string;
-  @Input() settingsTemplate: TemplateRef<any>;
+  @Input() configurationTemplate: TemplateRef<any>;
 
   @Input() limits: number[];
 

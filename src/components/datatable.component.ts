@@ -15,6 +15,7 @@ import { DataTableBodyComponent } from './body';
 import { DataTableColumnDirective } from './columns';
 import { DatatableRowDetailDirective } from './row-detail';
 import { DatatableFooterDirective } from './footer';
+import { DatatableConfigurationDirective } from './configuration';
 import { MouseEvent } from '../events';
 
 @Component({
@@ -28,6 +29,7 @@ import { MouseEvent } from '../events';
         <datatable-settings 
           *ngIf="settingsHeight"
           [settingsHeight]="settingsHeight"
+          [configurationTemplate]="configuration"
           [rowCount]="rowCount"
           [pageSize]="pageSize"
           [limits]="limits"
@@ -667,6 +669,15 @@ export class DatatableComponent implements OnInit, AfterViewInit, DoCheck {
   get isMultiClickSelection(): boolean {
     return this.selectionType === SelectionType.multiClick;
   }
+
+  /**
+   * Configuration template gathered from the ContentChild
+   * 
+   * @type {DataTableConfigurationDirective}
+   * @memberOf DatatableComponent
+   */
+  @ContentChild(DatatableConfigurationDirective)
+  configuration: DatatableConfigurationDirective;
 
   /**
    * Column templates gathered from `ContentChildren`

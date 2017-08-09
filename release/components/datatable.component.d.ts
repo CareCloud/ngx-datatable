@@ -5,6 +5,7 @@ import { DataTableBodyComponent } from './body';
 import { DataTableColumnDirective } from './columns';
 import { DatatableRowDetailDirective } from './row-detail';
 import { DatatableFooterDirective } from './footer';
+import { DatatableConfigurationDirective } from './configuration';
 export declare class DatatableComponent implements OnInit, AfterViewInit, DoCheck {
     private scrollbarHelper;
     /**
@@ -428,6 +429,13 @@ export declare class DatatableComponent implements OnInit, AfterViewInit, DoChec
      * @memberOf DatatableComponent
      */
     readonly isMultiClickSelection: boolean;
+    /**
+     * Configuration template gathered from the ContentChild
+     *
+     * @type {DataTableConfigurationDirective}
+     * @memberOf DatatableComponent
+     */
+    configuration: DatatableConfigurationDirective;
     /**
      * Returns the column templates.
      *
