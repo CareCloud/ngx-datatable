@@ -7,4 +7,5 @@ __export(require("./settings-row.component"));
 __export(require("./paging.component"));
 __export(require("./limiter.component"));
 __export(require("./search.component"));
+__export(require("./configuration.component"));
 //# sourceMappingURL=index.js.map

@@ -15,6 +15,7 @@ import { DataTableBodyComponent } from './body';
 import { DataTableColumnDirective } from './columns';
 import { DatatableRowDetailDirective } from './row-detail';
 import { DatatableFooterDirective } from './footer';
+import { DatatableConfigurationDirective } from './configuration';
 import { MouseEvent } from '../events';
 
 @Component({
@@ -28,12 +29,16 @@ import { MouseEvent } from '../events';
         <datatable-settings 
           *ngIf="settingsHeight"
           [settingsHeight]="settingsHeight"
+          [configurationTemplate]="configuration"
           [rowCount]="rowCount"
           [pageSize]="pageSize"
           [limits]="limits"
           [offset]="offset"
+          [searchTerm]="serchTerm"
+          [searchPlaceholder]="searchPlaceholder"
           [pagerLeftArrowIcon]="cssClasses.pagerLeftArrow"
           [pagerRightArrowIcon]="cssClasses.pagerRightArrow"
+          [externalSearching]="externalSearching"
           (page)="onSettingsPage($event)"
           (search)="search.emit($event)">
         </datatable-settings>
@@ -257,6 +262,31 @@ export class DatatableComponent implements OnInit, AfterViewInit, DoCheck {
   @Input() externalSorting: boolean = false;
 
   /**
+   * If the table should use external searching or
+   * no searching.
+   *
+   * @type {boolean}
+   * @memberOf DatatableComponent
+   */
+  @Input() externalSearching: boolean = false;
+
+  /**
+   * Search box placeholder text.
+   *
+   * @type {string}
+   * @memberOf DatatableComponent
+   */
+  @Input() searchPlaceholder: string;
+
+  /**
+   * Search term.
+   *
+   * @type {string}
+   * @memberOf DatatableComponent
+   */
+  @Input() searchTerm: string;
+
+  /**
    * The page size to be shown.
    * Default value: `undefined`
    *
@@ -267,7 +297,7 @@ export class DatatableComponent implements OnInit, AfterViewInit, DoCheck {
 
   /**
    * The configurable limits array
-   * Defautl value: `undefined`
+   * Default value: `undefined`
    * 
    * @type {number[]}
    */
@@ -639,6 +669,15 @@ export class DatatableComponent implements OnInit, AfterViewInit, DoCheck {
   get isMultiClickSelection(): boolean {
     return this.selectionType === SelectionType.multiClick;
   }
+
+  /**
+   * Configuration template gathered from the ContentChild
+   * 
+   * @type {DataTableConfigurationDirective}
+   * @memberOf DatatableComponent
+   */
+  @ContentChild(DatatableConfigurationDirective)
+  configuration: DatatableConfigurationDirective;
 
   /**
    * Column templates gathered from `ContentChildren`

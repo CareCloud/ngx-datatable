@@ -58,6 +58,7 @@ import { ColumnPinningComponent } from './columns/pinning.component';
 // -- Breeze
 import { BreezeOneComponent } from './breeze/breeze-one.component';
 import { BreezeTwoComponent } from './breeze/breeze-two.component';
+import { BreezeThreeComponent } from './breeze/breeze-three.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import { BreezeTwoComponent } from './breeze/breeze-two.component';
     DynamicHeightComponent,
     FooterDemoComponent,
     BreezeOneComponent,
-    BreezeTwoComponent
+    BreezeTwoComponent,
+    BreezeThreeComponent
   ],
   imports: [BrowserModule, NgxDatatableModule],
   bootstrap: [AppComponent]

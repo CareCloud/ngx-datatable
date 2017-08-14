@@ -1,0 +1,19 @@
+.search-text {
+    width: 200px; 
+    height: 30px; 
+    padding-right: 50px; 
+    display: inline-block;
+}
+.search-button {
+    margin-left: -50px; 
+    height: 30px; 
+    width: 50px; 
+    display: inline-block;
+}
+
+.fa-search:after {
+    content: 'Search';
+}
+.fa-times-circle:after {
+    content: 'Clear';
+}

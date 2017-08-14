@@ -21,6 +21,7 @@ var NgxDatatableModule = (function () {
                     ],
                     declarations: [
                         components_1.DataTableFooterTemplateDirective,
+                        components_1.DataTableConfigurationTemplateDirective,
                         directives_1.VisibilityDirective,
                         directives_1.DraggableDirective,
                         directives_1.ResizeableDirective,
@@ -47,6 +48,8 @@ var NgxDatatableModule = (function () {
                         components_1.DataTableSelectionComponent,
                         components_1.DataTableColumnHeaderDirective,
                         components_1.DataTableColumnCellDirective,
+                        components_1.DataTableConfigurationComponent,
+                        components_1.DatatableConfigurationDirective,
                         components_1.DatatableFooterDirective
                     ],
                     exports: [
@@ -58,6 +61,8 @@ var NgxDatatableModule = (function () {
                         components_1.DataTableColumnCellDirective,
                         components_1.DataTableFooterTemplateDirective,
                         components_1.DatatableFooterDirective,
+                        components_1.DataTableConfigurationTemplateDirective,
+                        components_1.DatatableConfigurationDirective,
                         components_1.DataTablePagerComponent
                     ]
                 },] },

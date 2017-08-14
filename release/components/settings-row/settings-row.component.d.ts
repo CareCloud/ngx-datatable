@@ -8,10 +8,14 @@ export declare class DataTableSettingsComponent {
     pagerLeftArrowIcon: string;
     pagerRightArrowIcon: string;
     totalMessage: string;
-    settingsTemplate: TemplateRef<any>;
+    configurationTemplate: TemplateRef<any>;
     limits: number[];
+    searchTerm: string;
+    searchPlaceholder: string;
+    externalSearching: boolean;
     page: EventEmitter<any>;
     search: EventEmitter<any>;
+    readonly isVisibleSearch: boolean;
     readonly isVisibleLimiter: boolean;
     readonly isVisiblePaging: boolean;
     readonly curPage: number;

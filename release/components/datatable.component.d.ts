@@ -5,6 +5,7 @@ import { DataTableBodyComponent } from './body';
 import { DataTableColumnDirective } from './columns';
 import { DatatableRowDetailDirective } from './row-detail';
 import { DatatableFooterDirective } from './footer';
+import { DatatableConfigurationDirective } from './configuration';
 export declare class DatatableComponent implements OnInit, AfterViewInit, DoCheck {
     private scrollbarHelper;
     /**
@@ -113,6 +114,28 @@ export declare class DatatableComponent implements OnInit, AfterViewInit, DoChec
      */
     externalSorting: boolean;
     /**
+     * If the table should use external searching or
+     * no searching.
+     *
+     * @type {boolean}
+     * @memberOf DatatableComponent
+     */
+    externalSearching: boolean;
+    /**
+     * Search box placeholder text.
+     *
+     * @type {string}
+     * @memberOf DatatableComponent
+     */
+    searchPlaceholder: string;
+    /**
+     * Search term.
+     *
+     * @type {string}
+     * @memberOf DatatableComponent
+     */
+    searchTerm: string;
+    /**
      * The page size to be shown.
      * Default value: `undefined`
      *
@@ -122,7 +145,7 @@ export declare class DatatableComponent implements OnInit, AfterViewInit, DoChec
     limit: number;
     /**
      * The configurable limits array
-     * Defautl value: `undefined`
+     * Default value: `undefined`
      *
      * @type {number[]}
      */
@@ -406,6 +429,13 @@ export declare class DatatableComponent implements OnInit, AfterViewInit, DoChec
      * @memberOf DatatableComponent
      */
     readonly isMultiClickSelection: boolean;
+    /**
+     * Configuration template gathered from the ContentChild
+     *
+     * @type {DataTableConfigurationDirective}
+     * @memberOf DatatableComponent
+     */
+    configuration: DatatableConfigurationDirective;
     /**
      * Returns the column templates.
      *

@@ -24,6 +24,9 @@ import {
   DataTableSelectionComponent,
   DataTableColumnHeaderDirective,
   DataTableColumnCellDirective,
+  DataTableConfigurationComponent,
+  DatatableConfigurationDirective,
+  DataTableConfigurationTemplateDirective,
   DatatableRowDetailTemplateDirective,
   DataTableFooterTemplateDirective,
   DatatableFooterDirective
@@ -49,6 +52,7 @@ import { ScrollbarHelper } from './services';
   ],
   declarations: [
     DataTableFooterTemplateDirective,
+    DataTableConfigurationTemplateDirective,
     VisibilityDirective,
     DraggableDirective,
     ResizeableDirective,
@@ -75,6 +79,8 @@ import { ScrollbarHelper } from './services';
     DataTableSelectionComponent,
     DataTableColumnHeaderDirective,
     DataTableColumnCellDirective,
+    DataTableConfigurationComponent,
+    DatatableConfigurationDirective,
     DatatableFooterDirective
   ],
   exports: [
@@ -86,6 +92,8 @@ import { ScrollbarHelper } from './services';
     DataTableColumnCellDirective,
     DataTableFooterTemplateDirective,
     DatatableFooterDirective,
+    DataTableConfigurationTemplateDirective,
+    DatatableConfigurationDirective,
     DataTablePagerComponent
   ]
 })

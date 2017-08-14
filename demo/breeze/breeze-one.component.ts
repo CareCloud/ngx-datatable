@@ -29,10 +29,13 @@ import {Page} from '../paging/model/page';
         [rows]='rows'
         [externalPaging]="true"
         [externalSorting]="true"
+        [externalSearching]="true"
         [count]="page.totalElements"
         [offset]="page.pageNumber"
         [limit]="page.size"
         [limits]="limits"
+        [searchTerm]="searchTerm"
+        [searchPlaceholder]="'Search breeze 1'"
         (sort)="onSort($event)"
         (page)="setPage($event)"
         (search)="onSearch($event)">
@@ -86,6 +89,7 @@ export class BreezeOneComponent {
   limits: number[] = [10, 25, 50];
   rows = new Array<CorporateEmployee>();
   page = new Page();
+  searchTerm: string;
 
   expanded: any = {};
 
@@ -138,10 +142,23 @@ export class BreezeOneComponent {
 
   onSearch(event) {
     console.log('Search event', event);
+    this.searchTerm = event.search;
+
     // this is only for demo purposes, normally
     // your server would return the result for
     // you and you would just set the rows prop
-    this.rows = this.rows;
+    this.serverResultsService.getResults(this.page).subscribe(pagedData => {
+      if (!this.searchTerm) {
+          this.page = pagedData.page;
+          this.rows = pagedData.data;
+          return;
+      }
+      const temp = pagedData.data.filter(function(d) {
+        return d.name.toLowerCase().indexOf(event.search) !== -1 || !event.search;
+      });
+      this.page = pagedData.page;
+      this.rows = temp;
+    });
   }
 
   toggleExpandRow(row) {

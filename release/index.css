@@ -3,21 +3,11 @@
  * Copyright 2016
  * Licensed under MIT
  */
-.pager,
-.pager li {
-  padding: 0;
-  margin: 0;
-  display: inline-block;
-  list-style: none; }
+.datatable-configuration-popup {
+  position: absolute;
+  right: 0; }
 
-.pager li, .pager li a {
-  outline: none; }
-
-.pager li a {
-  cursor: pointer;
-  display: inline-block; }
-
-.pager li.disabled a {
-  cursor: not-allowed; }
+.fa-cog:after {
+  content: 'Configure'; }
 
 /*# sourceMappingURL=index.map*/
