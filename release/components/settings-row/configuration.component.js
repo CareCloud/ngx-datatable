@@ -11,7 +11,7 @@ var DataTableConfigurationComponent = (function () {
         { type: core_1.Component, args: [{
                     selector: 'datatable-configuration',
                     styleUrls: ['./configuration.css'],
-                    template: "\n    <div>\n      <button class=\"cog-button\" (click)=\"toggleConfigs()\">\n        <i class=\"fa fa-cog\" aria-hidden=\"true\"></i>\n      </button>\n      <div class=\"datatable-configuration-popup\" [hidden]=\"!showConfigs\">\n        <div *ngIf=\"!configurationTemplate\">No Template!</div>\n        <ng-template *ngIf=\"configurationTemplate\"\n          [ngTemplateOutlet]=\"configurationTemplate.template\"\n          [ngOutletContext]=\"{ \n            rowCount: rowCount\n          }\">\n        </ng-template>\n      </div>\n    </div>\n  ",
+                    template: "\n      <div *ngIf=\"!configurationTemplate\">\n        <button class=\"cog-button\" (click)=\"toggleConfigs()\">\n          <i class=\"fa fa-cog\" aria-hidden=\"true\"></i>\n        </button>\n        <div class=\"datatable-configuration-popup\" [hidden]=\"!showConfigs\">\n          <div>No Template!</div>\n        </div>\n      </div>\n      <ng-template *ngIf=\"configurationTemplate\"\n        [ngTemplateOutlet]=\"configurationTemplate.template\"\n        [ngOutletContext]=\"{ \n          rowCount: rowCount\n        }\">\n      </ng-template>\n  ",
                     host: {
                         class: 'datatable-configuration'
                     },

@@ -6,20 +6,20 @@ import {
   selector: 'datatable-configuration',
   styleUrls: ['./configuration.scss'],
   template: `
-    <div>
-      <button class="cog-button" (click)="toggleConfigs()">
-        <i class="fa fa-cog" aria-hidden="true"></i>
-      </button>
-      <div class="datatable-configuration-popup" [hidden]="!showConfigs">
-        <div *ngIf="!configurationTemplate">No Template!</div>
-        <ng-template *ngIf="configurationTemplate"
-          [ngTemplateOutlet]="configurationTemplate.template"
-          [ngOutletContext]="{ 
-            rowCount: rowCount
-          }">
-        </ng-template>
+      <div *ngIf="!configurationTemplate">
+        <button class="cog-button" (click)="toggleConfigs()">
+          <i class="fa fa-cog" aria-hidden="true"></i>
+        </button>
+        <div class="datatable-configuration-popup" [hidden]="!showConfigs">
+          <div>No Template!</div>
+        </div>
       </div>
-    </div>
+      <ng-template *ngIf="configurationTemplate"
+        [ngTemplateOutlet]="configurationTemplate.template"
+        [ngOutletContext]="{ 
+          rowCount: rowCount
+        }">
+      </ng-template>
   `,
   host: {
     class: 'datatable-configuration'

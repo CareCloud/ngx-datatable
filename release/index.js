@@ -118,7 +118,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".datatable-configuration-popup {\n  position: absolute;\n  right: 0; }\n\n.fa-cog:after {\n  content: 'Configure'; }\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -5838,7 +5838,7 @@ var DataTableConfigurationComponent = (function () {
         core_1.Component({
             selector: 'datatable-configuration',
             styles: [__webpack_require__("./src/components/settings-row/configuration.scss")],
-            template: "\n    <div>\n      <button class=\"cog-button\" (click)=\"toggleConfigs()\">\n        <i class=\"fa fa-cog\" aria-hidden=\"true\"></i>\n      </button>\n      <div class=\"datatable-configuration-popup\" [hidden]=\"!showConfigs\">\n        <div *ngIf=\"!configurationTemplate\">No Template!</div>\n        <ng-template *ngIf=\"configurationTemplate\"\n          [ngTemplateOutlet]=\"configurationTemplate.template\"\n          [ngOutletContext]=\"{ \n            rowCount: rowCount\n          }\">\n        </ng-template>\n      </div>\n    </div>\n  ",
+            template: "\n      <div *ngIf=\"!configurationTemplate\">\n        <button class=\"cog-button\" (click)=\"toggleConfigs()\">\n          <i class=\"fa fa-cog\" aria-hidden=\"true\"></i>\n        </button>\n        <div class=\"datatable-configuration-popup\" [hidden]=\"!showConfigs\">\n          <div>No Template!</div>\n        </div>\n      </div>\n      <ng-template *ngIf=\"configurationTemplate\"\n        [ngTemplateOutlet]=\"configurationTemplate.template\"\n        [ngOutletContext]=\"{ \n          rowCount: rowCount\n        }\">\n      </ng-template>\n  ",
             host: {
                 class: 'datatable-configuration'
             },

@@ -43,7 +43,12 @@ import {Page} from '../paging/model/page';
         <!-- Configuration Template -->
         <ngx-datatable-configuration>
           <ng-template let-rowCount="rowCount" ngx-datatable-configuration-template>
-            <div>This is the template we want to inject</div>
+            <button class="cog-button" (click)="showConfigs = !showConfigs">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+            </button>
+            <div class="datatable-configuration-popup" [hidden]="!showConfigs">
+              <div>This is the template we want to inject</div>
+            </div>
           </ng-template>
         </ngx-datatable-configuration>
 
