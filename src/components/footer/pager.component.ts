@@ -7,7 +7,7 @@ import {
   styleUrls: ['./pager.scss'],
   template: `
     <button class="table-page-item" *ngIf="pages[0].text > 1" (click)=selectPage(1)>
-        FIRST
+        {{ messages.first }}
     </button>
     <div class="ellipsis" *ngIf="pages[0].text > 1">
       <div class="oval"></div>
@@ -27,7 +27,7 @@ import {
     <button class="table-page-item" 
             *ngIf="pages[pages.length - 1].text != totalPages"
             (click)=selectPage(totalPages)>
-        LAST
+      {{ messages.last }}
     </button>
   `,
   host: {
@@ -41,6 +41,7 @@ export class DataTablePagerComponent {
   @Input() pagerRightArrowIcon: string;
   @Input() pagerPreviousIcon: string;
   @Input() pagerNextIcon: string;
+  @Input() messages: string;
 
   @Input()
   set size(val: number) {

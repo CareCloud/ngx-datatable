@@ -14,7 +14,7 @@ import {
           <i class="{{pagerLeftArrowIcon}}"></i>
         </a>
       </li>
-      <li>Page {{page}} of {{totalPages}}</li>
+      <li>{{messages.page}} {{page}} {{messages.of}} {{totalPages}}</li>
       <li [class.disabled]="!canNext()">
         <a
           href="javascript:void(0)"
@@ -68,6 +68,8 @@ export class DataTablePagingComponent {
     const count = this.size < 1 ? 1 : Math.ceil(this.count / this.size);
     return Math.max(count || 0, 1);
   }
+
+  @Input() messages: any;
 
   @Output() settingUpdate: EventEmitter<any> = new EventEmitter();
 

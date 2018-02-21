@@ -9,7 +9,7 @@ import {
     <select [(ngModel)]="limit" 
       (ngModelChange)="selectLimit(limit)">
       <option *ngFor="let item of _limits" [value]="item">
-          Show {{item}} Items
+          {{ messages.show }} {{item}} {{ messages.items }}
       </option>
     </select>
   `,
@@ -34,6 +34,8 @@ export class DataTableLimiterComponent {
   get limits(): number[] {
     return this._limits;
   }
+
+  @Input() messages: any;
 
   @Output() settingUpdate: EventEmitter<any> = new EventEmitter();
 

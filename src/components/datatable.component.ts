@@ -28,6 +28,7 @@ import { MouseEvent } from '../events';
 
         <datatable-settings 
           *ngIf="settingsHeight"
+          [messages]="messages"
           [settingsHeight]="settingsHeight"
           [configurationTemplate]="configuration"
           [rowCount]="rowCount"
@@ -96,6 +97,7 @@ import { MouseEvent } from '../events';
       </div>
       <datatable-footer
         *ngIf="footerHeight"
+        [messages]="messages"
         [rowCount]="rowCount"
         [pageSize]="pageSize"
         [offset]="offset"
@@ -415,6 +417,12 @@ export class DatatableComponent implements OnInit, AfterViewInit, DoCheck {
    * @memberOf DatatableComponent
    */
   @Input() messages: any = {
+    first: 'FIRST',
+    last: 'FIRST',
+    show: 'Show',
+    items: 'Items',
+    page: 'Page',
+    of: 'of',
     // Message to show when array is presented
     // but contains no values
     emptyMessage: 'No data to display',

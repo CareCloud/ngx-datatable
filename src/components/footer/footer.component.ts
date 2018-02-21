@@ -25,6 +25,7 @@ import { Component, Output, EventEmitter, ChangeDetectionStrategy, Input, Templa
         {{rowCount.toLocaleString()}} {{totalMessage}}
       </div>
       <datatable-pager *ngIf="!footerTemplate"
+        [messages]="messages"
         [pagerLeftArrowIcon]="pagerLeftArrowIcon"
         [pagerRightArrowIcon]="pagerRightArrowIcon"
         [pagerPreviousIcon]="pagerPreviousIcon"
@@ -57,6 +58,7 @@ export class DataTableFooterComponent {
 
   @Input() selectedCount: number = 0;
   @Input() selectedMessage: string | boolean;
+  @Input() messages: any;
 
   @Output() page: EventEmitter<any> = new EventEmitter();
 

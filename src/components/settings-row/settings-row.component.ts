@@ -17,6 +17,7 @@ import {
         <div class="settings-right">
             <div class="setting-tab" [hidden]="!isVisibleLimiter">
               <datatable-limiter
+                [messages]="messages"
                 [limit]="pageSize"
                 [limits]="limits"
                 (settingUpdate)="page.emit($event)">
@@ -24,6 +25,7 @@ import {
             </div>
             <div class="setting-tab" [hidden]="!isVisiblePaging">
               <datatable-paging
+                [messages]="messages"
                 [pagerLeftArrowIcon]="pagerLeftArrowIcon"
                 [pagerRightArrowIcon]="pagerRightArrowIcon"
                 [page]="curPage"
@@ -74,6 +76,7 @@ export class DataTableSettingsComponent {
   @Input() searchTerm: string;
   @Input() searchPlaceholder: string;
   @Input() externalSearching: boolean;
+  @Input() messages: any;
 
   @Output() page: EventEmitter<any> = new EventEmitter();
   @Output() search: EventEmitter<any> = new EventEmitter();
