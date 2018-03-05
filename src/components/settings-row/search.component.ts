@@ -8,7 +8,8 @@ import {
   template: `
     <input type="text" class="search-text" 
         [(ngModel)]="newSearchTerm"
-        placeholder="{{searchPlaceholder}}">
+        placeholder="{{searchPlaceholder}}"
+        (keyup.enter)="submitSearch(newSearchTerm)">
     <button class="search-button" *ngIf="showSearch" (click)="submitSearch(newSearchTerm)">
         <i class="fa fa-search" aria-hidden="true"></i>
     </button>

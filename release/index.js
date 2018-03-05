@@ -6213,7 +6213,7 @@ var DataTableSearchComponent = (function () {
         core_1.Component({
             selector: 'datatable-search',
             styles: [__webpack_require__("./src/components/settings-row/search.scss")],
-            template: "\n    <input type=\"text\" class=\"search-text\" \n        [(ngModel)]=\"newSearchTerm\"\n        placeholder=\"{{searchPlaceholder}}\">\n    <button class=\"search-button\" *ngIf=\"showSearch\" (click)=\"submitSearch(newSearchTerm)\">\n        <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n    </button>\n    <button class=\"search-button\" *ngIf=\"!showSearch\" (click)=\"submitSearch()\">\n        <i class=\"fa fa-times-circle\" aria-hidden=\"true\"></i>\n    </button>\n  ",
+            template: "\n    <input type=\"text\" class=\"search-text\" \n        [(ngModel)]=\"newSearchTerm\"\n        placeholder=\"{{searchPlaceholder}}\"\n        (keyup.enter)=\"submitSearch(newSearchTerm)\">\n    <button class=\"search-button\" *ngIf=\"showSearch\" (click)=\"submitSearch(newSearchTerm)\">\n        <i class=\"fa fa-search\" aria-hidden=\"true\"></i>\n    </button>\n    <button class=\"search-button\" *ngIf=\"!showSearch\" (click)=\"submitSearch()\">\n        <i class=\"fa fa-times-circle\" aria-hidden=\"true\"></i>\n    </button>\n  ",
             host: {
                 class: 'datatable-search'
             },
